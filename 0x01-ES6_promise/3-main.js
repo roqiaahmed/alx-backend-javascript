@@ -1,13 +1,3 @@
-import guardrail from "./9-try";
-import divideFunction from "./8-try";
+import handleProfileSignup from "./6-final-user";
 
-console.log(
-  guardrail(() => {
-    return divideFunction(10, 2);
-  })
-);
-console.log(
-  guardrail(() => {
-    return divideFunction(10, 0);
-  })
-);
+console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg"));

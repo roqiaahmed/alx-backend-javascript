@@ -1,5 +1,5 @@
-import signUpUser from "./4-user-promise";
-import uploadPhoto from "./5-photo-reject";
+import signUpUser from './4-user-promise';
+import uploadPhoto from './5-photo-reject';
 
 export default async function handleProfileSignup(
   firstName,
@@ -13,7 +13,7 @@ export default async function handleProfileSignup(
     results.map((result) => ({
       status: result.status,
       value:
-        result.status === "fulfilled" ? result.value : String(result.reason),
+        result.status === 'fulfilled' ? result.value : String(result.reason),
     }))
   );
 }

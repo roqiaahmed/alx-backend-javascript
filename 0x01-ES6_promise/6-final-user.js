@@ -9,11 +9,11 @@ export default async function handleProfileSignup(
   return Promise.allSettled([
     signUpUser(firstName, lastName),
     uploadPhoto(fileName),
-  ]).then((results) => {
+  ]).then((results) =>
     results.map((result) => ({
       status: result.status,
       value:
         result.status === "fulfilled" ? result.value : String(result.reason),
-    }));
-  });
+    }))
+  );
 }

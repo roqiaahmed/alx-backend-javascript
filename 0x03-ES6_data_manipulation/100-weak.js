@@ -1,6 +1,6 @@
 export const weakMap = new WeakMap();
 
-export default function queryAPI(endpoint) {
+export const queryAPI = (endpoint) => {
   let calls = weakMap.get(endpoint) || 0;
   calls += 1;
   if (calls >= 5) {
@@ -8,4 +8,4 @@ export default function queryAPI(endpoint) {
   }
   weakMap.set(endpoint, calls);
   return calls;
-}
+};

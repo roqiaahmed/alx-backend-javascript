@@ -1,6 +1,6 @@
 export default function cleanSet(set, startString) {
-  if (startString === "" || startString === undefined) {
-    return "";
+  if (startString === '' || startString === undefined) {
+    return '';
   }
   const test = new Set();
 
@@ -9,5 +9,5 @@ export default function cleanSet(set, startString) {
       test.add(element.slice(startString.length));
     }
   });
-  return Array.from(test).join("-");
+  return Array.from(test).join('-');
 }

@@ -1,37 +1,42 @@
-const fs = require("fs");
+/* eslint-disable no-plusplus */
+const fs = require('fs');
 
 function countStudents(path) {
   const hashMap = new Map();
-
+  let num = 0;
   try {
-    data = fs.readFileSync(path, "utf8");
-    arr_data = data.split("\n");
-    for (let i = 1; i < arr_data.length; i++) {
-      line = arr_data[i].split(",");
+    const data = fs.readFileSync(path, 'utf8');
+    const arrData = data.split('\n');
+    for (let i = 1; i < arrData.length; i++) {
+      const line = arrData[i].split(',');
       if (line.length === 4) {
         const name = line[0];
         const key = line[3];
+
         if (hashMap.has(key)) {
-          list = hashMap.get(key);
+          const list = hashMap.get(key);
           list.push(name);
           hashMap.set(key, list);
+          num += 1;
         } else {
+          num += 1;
           const list = [name];
           hashMap.set(key, list);
         }
       }
     }
 
-    console.log(`Number of students: ${arr_data.length - 1}`);
+    console.log(`Number of students: ${num}`);
     for (const [key, value] of hashMap.entries()) {
       console.log(
         `Number of students in ${key}: ${value.length}. List: ${value.join(
-          ", "
-        )}`
+          ', ',
+        )}`,
       );
     }
   } catch (error) {
-    console.log("Cannot load the database");
+    console.log(error);
+    console.log('Cannot load the database');
   }
 }
 module.exports = countStudents;

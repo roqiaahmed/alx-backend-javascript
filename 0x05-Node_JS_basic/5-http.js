@@ -7,6 +7,7 @@ const port = 1245;
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
   if (req.url === '/students') {
+    res.setHeader('Content-Type', 'text/plain');
     res.write('This is the list of our students\n');
     countStudents(argv[2])
       .then((data) => {
@@ -17,6 +18,7 @@ const app = http.createServer((req, res) => {
       });
   }
   if (req.url === '/') {
+    res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
   }
 });

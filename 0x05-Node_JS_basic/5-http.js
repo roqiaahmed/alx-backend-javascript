@@ -7,17 +7,21 @@ const port = 1245;
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
   if (req.url === '/students') {
-    res.write('This is the list of our students\n');
+    res.setHeader('Content-Type', 'text/plain');
     countStudents(argv[2])
       .then((data) => {
+        res.write('This is the list of our students\n');
         res.end(data);
       })
       .catch(() => {
-        process.exit(1);
+        res.end('This is the list of our students\n');
       });
-  }
-  if (req.url === '/') {
-    res.end('Hello Holberton School!');
+  } else if (req.url === '/') {
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello Holberton School!\n');
+  } else {
+    res.statusCode = 404;
+    res.end('Page not found');
   }
 });
 

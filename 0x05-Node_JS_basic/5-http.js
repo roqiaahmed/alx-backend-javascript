@@ -17,7 +17,7 @@ const app = http.createServer((req, res) => {
       });
   }
   if (req.url === '/') {
-    res.end('Hello Holberton School!\n');
+    res.end('Hello Holberton School!');
   }
 });
 

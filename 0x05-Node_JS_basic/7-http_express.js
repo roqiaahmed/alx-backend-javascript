@@ -10,10 +10,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  res.write('This is the list of our students\n');
   countStudents(argv[2])
     .then((data) => {
-      res.send(data);
+      res.send(`This is the list of our students:\n${data}`);
     })
     .catch(() => {
       res.status(500).send('Error reading the database file');

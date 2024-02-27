@@ -11,7 +11,7 @@ function countStudents(path) {
       const line = arrData[i].split(',');
       if (line.length === 4) {
         const name = line[0];
-        const key = line[3];
+        const key = line[3].trim();
 
         if (hashMap.has(key)) {
           const list = hashMap.get(key);
@@ -35,8 +35,9 @@ function countStudents(path) {
       );
     }
   } catch (error) {
-    console.log(error);
     console.log('Cannot load the database');
+    throw error;
   }
 }
+
 module.exports = countStudents;

@@ -1,24 +1,21 @@
 const http = require('http');
-const { argv } = require('process');
 const countStudents = require('./3-read_file_async');
 
 const hostname = '127.0.0.1';
 const port = 1245;
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/students') {
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('This is the list of our students\n');
-    countStudents(argv[2])
+    countStudents(process.argv[2])
       .then((data) => {
-        res.end(data);
+        res.end(`This is the list of our students\n${data}`);
       })
-      .catch(() => {
-        process.exit(1);
+      .catch((error) => {
+        res.end(`This is the list of our students\n${error.message}`);
       });
   }
   if (req.url === '/') {
-    res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
   }
 });

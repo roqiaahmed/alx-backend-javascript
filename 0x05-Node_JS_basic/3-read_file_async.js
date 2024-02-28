@@ -1,12 +1,10 @@
 /* eslint-disable no-plusplus */
-const fs = require('fs');
+const fs = require('fs').promises;
 
 function countStudents(path) {
   return new Promise((res, rej) => {
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) {
-        rej(Error('Cannot load the database'));
-      } else {
+    fs.readFile(path, 'utf8')
+      .then((data) => {
         const hashMap = new Map();
         let num = 0;
         let msg = '';
@@ -44,8 +42,10 @@ function countStudents(path) {
           }. List: ${value.join(', ')}\n`;
         }
         res(msg);
-      }
-    });
+      })
+      .catch(() => {
+        rej(new Error('Cannot load the database'));
+      });
   });
 }
 

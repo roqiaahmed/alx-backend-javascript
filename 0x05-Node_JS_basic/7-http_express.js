@@ -14,8 +14,10 @@ app.get('/students', (req, res) => {
     .then((data) => {
       res.send(`This is the list of our students:\n${data}`);
     })
-    .catch(() => {
-      res.status(500).send('Error reading the database file');
+    .catch((error) => {
+      res
+        .status(500)
+        .send(`This is the list of our students\n${error.message}`);
     });
 });
 

@@ -11,7 +11,7 @@ describe("calcul", () => {
   it("checks round", () => {
     assert.equal(calculateNumber(1.2, 3.7), 5);
   });
-  it("checks round afds", () => {
+  it("checks round", () => {
     assert.equal(calculateNumber(1.5, 3.7), 6);
   });
 });

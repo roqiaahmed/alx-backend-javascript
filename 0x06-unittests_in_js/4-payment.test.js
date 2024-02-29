@@ -16,5 +16,6 @@ describe("sendPaymentRequestToApi", () => {
     expect(calculateNumberStubs.calledWith("SUM", 100, 20)).to.be.true;
     expect(calculateNumberStubs.calledOnce).to.be.true;
     expect(consoleSpy.calledWith("The total is: 10")).to.be.true;
+    expect(consoleSpy.calledOnce).to.be.true;
   });
 });

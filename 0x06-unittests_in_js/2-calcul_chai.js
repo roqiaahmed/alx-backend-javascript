@@ -10,6 +10,6 @@ function calculateNumber(type, a, b) {
   if (type === "DIVIDE") {
     return br === 0 ? "Error" : ar / br;
   }
-  return "Error";
+  return 0;
 }
 module.exports = calculateNumber;
